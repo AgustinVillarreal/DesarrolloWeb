@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd Store</title>
+    <link rel="preload" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!-- UTILZAMOS ENFOQUE BEM, Bloque se nombra con un nombre, Elemento con el nombre del bloque y doble guion bajo, y Modificador con nombre del bloque y doble guion medio -->
+<body>
+    <header class="header">             
+        <a href="index.html">
+            <img class="header__logo" src="img/logo.png" alt="Logotipo">
+        </a>
+    </header>
+
+    <nav class="navegacion">
+        <!-- Se utiliza un modificador para cuando queda presionado el enlace -->
+        <a class= "navegacion__enlace" href="index.html">Tienda</a>
+        <a class= "navegacion__enlace navegacion__enlace--activo" href="nosotros.html">Nosotros</a>
+    </nav>
+
+    <main class="contenedor">
+        <h1>Sobre Nosotros</h1>
+        <div class="nosotros">
+            <div class="nosotros__contenido">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Mauris non dapibus enim, eu tincidunt mauris. Maecenas sit amet lorem sed massa cursus facilisis. 
+                    Maecenas augue libero, convallis vitae felis lobortis, interdum egestas arcu. 
+                    Suspendisse sodales dignissim orci, id hendrerit quam tempus nec. Proin consequat elit vel 
+                    ipsum placerat, eget scelerisque libero eleifend. Duis ornare sit amet est vel efficitur. 
+                    Sed suscipit ipsum sed ex fringilla rutrum. Vestibulum sed ornare diam. Integer laoreet ex vel 
+                    justo dapibus, sed tristique velit ultrices. Duis vitae pulvinar elit, ac hendrerit nisl.
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Mauris non dapibus enim, eu tincidunt mauris. Maecenas sit amet lorem sed massa cursus facilisis. 
+                    Maecenas augue libero, convallis vitae felis lobortis.
+                </p>
+            </div>
+            <img class="nosotros__imagen" src="img/nosotros.jpg" alt="imagen nosotros">
+        </div>
+    </main>
+
+    <section class="contenedor comprar">
+        <h2 class="comprar__titulo">¿Por qué comprar con nosotros?</h2>
+        <div class="bloques">
+            <div class="bloque">
+                <img class="bloque__imagen" src="img/icono_1.png" alt="porqué comprar">
+                <h3 class="bloque__titulo">El Mejor Precio</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non dapibus enim, eu tincidunt mauris.
+                </p>
+            </div> <!--.bloque-->
+            <div class="bloque">
+                <img class="bloque__imagen" src="img/icono_2.png" alt="porqué comprar">
+                <h3 class="bloque__titulo">Para Devs</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non dapibus enim, eu tincidunt mauris.
+                </p>
+            </div> <!--.bloque-->
+            <div class="bloque">
+                <img class="bloque__imagen" src="img/icono_3.png" alt="porqué comprar">
+                <h3 class="bloque__titulo">Envío Gratis</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non dapibus enim, eu tincidunt mauris.
+                </p>
+            </div> <!--.bloque-->
+            <div class="bloque">
+                <img class="bloque__imagen" src="img/icono_4.png" alt="porqué comprar">
+                <h3 class="bloque__titulo">La Mejor Calidad</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non dapibus enim, eu tincidunt mauris.
+                </p>
+            </div> <!--.bloque-->
+        </div> <!--.bloques-->
+    </section>
+
+    <footer class="footer">
+        <p class="footer__texto">Front End Store - Todos los derechos Reservados 2021.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,312 @@
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /*Hack para Box Model*/
+    scroll-snap-type: y mandatory; /*Si quiero hacer scroll para la derecha o izquierda pongo eje x en lugar del eje y*/
+    /*scroll-snap-type: y proximity; Va a la seccion indicada que tiene mas cercana, mandatory en cuanto scrolleas va hacia la seccion indicada*/
+}
+
+ 
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center; /*Que se detenga SIEMPRE en la seccion de Servicios*/
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit; /*Box Model*/
+}
+
+body{
+    font-size: 16px;/* 1 rem = 10px pero se adaptan a la densidad de pixeles de distintas pantallas*/
+    font-family: 'Oswald', sans-serif; /* sans-serif significa la primera que encuentre*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+}
+
+/* Globales */
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+.contenedor{
+    max-width: 90rem;
+    /*margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;* ES LO MISMO QUE LO DE ABAJO/
+    /*margin: 0 auto 0 auto ES LO MISMO QUE LO DE ABAJO*/
+    margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none; /*Por si el tipo del boton es un input quitarle el borde gris*/
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.7);
+    -moz-box-shadow:    0px 5px 15px 0px rgba(0,0,0,0.7);
+    box-shadow:         0px 5px 15px 0px rgba(0,0,0,0.7);
+    background-color:   var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+
+/* Tipografia */
+
+h1,h2,h3 {
+    text-align: center;
+}
+
+/* Titulos */
+
+.titulo span{
+    font-size: 2rem;
+}
+
+/* Navegacion Principal */
+
+.nav-bg{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    display: flex; 
+    flex-direction: column;
+    /*flow-direction: row o column*/ /*si elijo column puedo usar align-items: center; para jugar con las posiciones de los enlaces*/
+    align-items: center;
+}
+/* puedo centrar los items sacando de .navegacion-principal la direccion de boxflex en columna y la alineacion y
+ poniendo 
+ .navegacion-principal a{
+    display: block;
+    align-items: center;
+}*/
+
+.navegacion-principal a{
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;  
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .boton{
+        width: auto;
+    }
+}
+/*Utilidades*/
+
+.w-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-100{
+        width: auto;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+/* Hero */
+
+.hero {
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 410px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    /*background-color: rgba(0, 0, 0, .7);*/
+    background-color: rgb(0 0 0 / 70%); /* OTRA SINTAXIS NUEVA*/
+    width: 100%;
+    height: 100%;
+    
+    /* CENTRAR VERTICAL Y HORIZONTALMENTE */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+ 
+
+@media (min-width: 768px){
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        /*DISTINTAS SINTAXIS
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 2fr;
+        grid-template-columns: 33.3% 33.3% 33.3%; PORCENTAJE
+        grid-template-columns: 30rem 30rem; PIXELES
+        grid-template-rows: 30rem 80rem; IGUAL QUE COLUMNS
+    
+        SINTAXIS QUE AGRUPA COLUMNS Y ROWS
+        grid: 30rem 80rem / 30rem 30rem (seria grid: rows / columns)*/
+        column-gap: 1rem;
+    }
+}
+
+/* ¿Cuando usar CSS Grid y cuando usar FLexBox?
+    FLEXBOX: Para distribuir o alinear elementos que se encuentran dentro de un contenedor por ejemplo la barra de navegacion
+    CSS GRID: Para definir el layout de la pagina web, por ejemplo columnas, filas o contenedores de elementos por ejemplo las columnas de servicios */
+
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Contacto */
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%); /*Utiliza el valor minimo entre 60 rem y el 100% del espacio ocupado por el formulario sirve para ahorrarse algunos media Queries*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    color: var(--primario);
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    } 
+    .campo:nth-child(3),
+    .campo:nth-child(4){ /*Selecciona el 3 y el 4to hijo de la clase campo, es decir el del correo y el del mensaje*/
+        grid-column: 1 / 3; /*Es decir, que el input correo abarque desde la columna 1 hasta la 3*/
+    }
+}
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+/*Para poder modificar los inputs puedo pararme sobre ellos con su tipo:
+Por ejemplo,
+.campo input{
+    background-color: red; Esto me pintaria de rojo todos los inputs excepto el textarea
+}
+Pero si solamente quiero el de tipo text o el de tipo tel, o ambos, uso:
+.campo input[type="text"],
+.campo input[type="tel"]{
+    background-color: red; Esto me pintaria de rojo unicamente el telefono y el nombre
+}*/
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+.footer {
+    text-align: center;
+}

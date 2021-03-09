@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd Store</title>
+    <link rel="preload" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preload" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<!-- UTILZAMOS ENFOQUE BEM, Bloque se nombra con un nombre, Elemento con el nombre del bloque y doble guion bajo, y Modificador con nombre del bloque y doble guion medio -->
+<body>
+    <header class="header">             
+        <a href="index.html">
+            <img class="header__logo" src="img/logo.png" alt="Logotipo">
+        </a>
+    </header>
+
+    <nav class="navegacion">
+        <!-- Se utiliza un modificador para cuando queda presionado el enlace -->
+        <a class= "navegacion__enlace navegacion__enlace--activo" href="index.html">Tienda</a>
+        <a class= "navegacion__enlace" href="nosotros.html">Nosotros</a>
+    </nav>
+
+    <main class="contenedor">
+        <h1>Nuestros Productos</h1>
+        <div class="grid">
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/1.jpg" alt="remera VueJs">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">VueJs</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/2.jpg" alt="remera AngularJs">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">AngularJs</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/3.jpg" alt="remera React">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">ReactJs</p>
+                        <p class="producto__precio">$35</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/4.jpg" alt="remera Redux">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">Redux</p>
+                        <p class="producto__precio">$15</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/5.jpg" alt="remera Node">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">Node.js</p>
+                        <p class="producto__precio">$45</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/6.jpg" alt="remera SASS">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">SASS</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/7.jpg" alt="remera HTML5">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">HTML5</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/8.jpg" alt="remera GitHub">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">GitHub</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/9.jpg" alt="remera Bulma">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">BulmaCS</p>
+                        <p class="producto__precio">$35</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/10.jpg" alt="remera TypeScript">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">TypeScript</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/11.jpg" alt="remera Drupal">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">Drupal</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/12.jpg" alt="remera JavaScript">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">JavaScript</p>
+                        <p class="producto__precio">$55</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/13.jpg" alt="remera GraphQL">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">GraphQL</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+            <div class="producto">
+                <a href="producto.html">
+                    <img class="producto__imagen" src="img/14.jpg" alt="remera WordPress">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre">WordPress</p>
+                        <p class="producto__precio">$25</p>
+                    </div>
+                </a>
+            </div>  <!-- .producto -->
+
+            <div class="grafico grafico--camisas"></div>
+            <div class="grafico grafico--node"></div>
+
+        </div> <!-- .grid-->
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto">Front End Store - Todos los derechos Reservados 2021.</p>
+    </footer>
+</body>
+</html>
