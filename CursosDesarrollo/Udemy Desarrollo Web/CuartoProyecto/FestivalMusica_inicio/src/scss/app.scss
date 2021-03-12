@@ -3,8 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
 @import 'bases/variables'; //Tiene que ir antes de los globales pq no poodemos usar variables que no definimos
 @import 'bases/mixins';
+@import 'bases/utilidades';
 @import 'bases/globales';
 
 @import 'layout/header';
 @import 'layout/video';
 @import 'layout/festival';
+@import 'layout/lineup';
+@import 'layout/galeria';
+
