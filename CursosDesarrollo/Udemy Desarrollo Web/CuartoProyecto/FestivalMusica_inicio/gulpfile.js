@@ -5,6 +5,18 @@ const notify = require('gulp-notify');
 const webp = require('gulp-webp');
 const concat = require('gulp-concat');
 
+//  Utilidades CSS
+
+const autoprefixer = require('autoprefixer'); // Nos permite agregar prefijos
+const postcss = require('gulp-postcss'); // Nos va a agregar procesamiento a nuestro css 
+const cssnano = require('cssnano'); //cssnano crea una version optimizada del css
+const sourcemaps = require('gulp-sourcemaps'); //sirve para poder localizar la linea de css en el navegador luego de optimizar el archivo css
+
+// Utilidades JS
+
+const terser = require('gulp-terser-js'); //Minifica el codigo de JS
+const rename = require('gulp-rename');
+
 const paths = {
     scss: 'src/scss/**/*.scss',
     imagen: 'src/img/**/*',
@@ -15,17 +27,10 @@ const paths = {
 
 function css() {
     return src(paths.scss)
-        .pipe( sass({
-            outputStyle: 'expanded'
-        }) )
-        .pipe( dest('./build/css') )
-}
-
-function minificarCss() {
-    return src(paths.scss)
-        .pipe( sass({
-            outputStyle: 'compressed'
-        }) )
+        .pipe( sourcemaps.init()) //inicia el sourcemaps y localiza donde queda los archivos originales antes de que se optimice y quede inentendible
+        .pipe( sass())
+        .pipe( postcss([ autoprefixer(), cssnano()]))
+        .pipe( sourcemaps.write('.')) //escribe los cambios
         .pipe( dest('./build/css') )
 }
 
@@ -38,7 +43,11 @@ function imagen() {
 
 function javaScript() {
     return src(paths.js)
+        .pipe( sourcemaps.init() )
         .pipe( concat('bundle.js'))
+        .pipe( terser() )
+        .pipe( sourcemaps.write('.'))
+        .pipe( rename({ suffix: '.min'})) //Le agrega un .min de minificado
         .pipe( dest('./build/js'))
 }
 
@@ -55,7 +64,6 @@ function watchArchivos() {
 }
 
 exports.css = css;
-exports.minificarCss = minificarCss;
 exports.imagen = imagen;
 exports.watchArchivos = watchArchivos;
 exports.versionWebp = versionWebp;

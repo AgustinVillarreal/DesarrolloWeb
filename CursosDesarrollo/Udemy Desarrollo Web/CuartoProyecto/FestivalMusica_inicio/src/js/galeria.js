@@ -38,7 +38,7 @@ function mostrarImagen(e) {
     
     // boton para cerrar imagen
     const cerrarImagen = document.createElement('P');
-    cerrarImagen.textContent = 'X';
+    cerrarImagen.textContent = 'x';
     cerrarImagen.classList.add('boton-cerrar');
 
     overlay.appendChild(cerrarImagen);
