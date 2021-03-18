@@ -1,5 +1,12 @@
 let pagina = 1;
 
+const cita = {
+    nombre: '',
+    fecha: '',
+    hora: '',
+    servicios: []
+}
+
 
 document.addEventListener('DOMContentLoaded', function(){
     iniciarApp();
@@ -21,6 +28,14 @@ function iniciarApp(){
 
     // Comprueba la pagina actual para ocultar o mostrar la paginacion
     botonesPaginador();
+
+    // Mostrar el resumen de la cita (o error en caso de que este incompleto)
+    mostrarResumen();
+
+    nombreCita();
+    fechaCita();
+
+    deshabilitarFechaAnterior();
 }
 
 function mostrarSeccion() {
@@ -118,12 +133,36 @@ function seleccionarServicio(e){
         elementoDIV = e.target;
     }
 
+    const id = parseInt(elementoDIV.dataset.idServicio);
+
     if(elementoDIV.classList.contains('seleccionado')){
         elementoDIV.classList.remove('seleccionado');
+
+        eliminarServicio(id);
     } else {
         elementoDIV.classList.add('seleccionado');
+        
+        const servicioObj = {
+            id: id,
+            nombre: elementoDIV.firstElementChild.textContent ,
+            precio: elementoDIV.firstElementChild.nextElementSibling.textContent
+        }
+
+        agregarServicio(servicioObj);
     }   
 }
+
+function eliminarServicio(id) {
+    const { servicios } = cita;
+    cita.servicios = servicios.filter(servicio => servicio.id !== id)
+}
+
+function agregarServicio(servicioObj) {
+    const { servicios } = cita;
+    cita.servicios = [ ...servicios, servicioObj];
+
+}
+
 
 function paginaSiguiente() {
     const paginaSiguiente = document.querySelector('#siguiente');
@@ -158,4 +197,95 @@ function botonesPaginador(){
     } 
 
     mostrarSeccion();
+}
+
+function mostrarResumen() {
+    const { nombre, fecha, hora, servicios } = cita;
+    const resumenDiv = document.querySelector('.contenido-resumen');
+
+    if(Object.values(cita).includes('')){
+        
+        const noServicio = document.createElement('P');
+        noServicio.textContent = 'Faltan datos de Servicios, hora, fecha o nombre';
+        noServicio.classList.add('invalidar-cita');
+    
+        resumenDiv.appendChild(noServicio);
+    }
+
+}
+
+function nombreCita() {
+    
+    const nombreInput = document.querySelector('#nombre');
+    nombreInput.addEventListener('input', e => {
+        const nombreTexto = e.target.value.trim();
+
+        // Validacion de que el nombre contenga algo
+
+        if(nombreTexto === '' || nombreTexto.length < 3){
+            mostrarAlerta('Nombre no válido', 'error');
+        } else {
+            const alerta = document.querySelector('.alerta')
+            if(alerta){
+                alerta.remove()
+            }
+            cita.nombre = nombreTexto;
+        }
+    })
+}
+
+function mostrarAlerta(mensaje, tipo) {
+    // Si hay una alerta antes no crear otra
+
+    const alertaPrevia = document.querySelector('.alerta')
+    if(alertaPrevia){
+        return;
+    }
+
+    const alerta = document.createElement('DIV');
+    alerta.textContent = mensaje;
+    alerta.classList.add('alerta');
+    if(tipo === 'error'){
+        alerta.classList.add(tipo);
+    }
+
+    const formulario = document.querySelector('.formulario');
+    formulario.appendChild(alerta);
+
+    // Eliminar la alerta despues de 3 seg
+
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
+}
+
+function fechaCita() {
+    const fechaInput = document.querySelector('#fecha')
+    fechaInput.addEventListener('input', e => {
+
+        const dia = new Date(e.target.value).getUTCDay();
+
+        if([0,6].includes(dia)){
+            e.preventDefault();
+            fechaInput.value = '';
+            mostrarAlerta('Fines de Semana no son validos', 'error')
+        } else {
+            cita.fecha = fechaInput.value;
+            console.log(cita);
+        }
+    })
+}
+
+function deshabilitarFechaAnterior() {
+    const inputFecha = document.querySelector('#fecha');
+
+    const fechaAhora = new Date();
+    console.log(fechaAhora);
+    const dia = fechaAhora.getDate() + 1;
+    const year = fechaAhora.getFullYear();
+    const mes = fechaAhora.getMonth();
+    
+    const fechaDeshabilitar = `${year}-${mes < 10 ? `0${mes}` : mes}-${dia < 10 ? `0${dia}` : dia}`
+    console.log(fechaDeshabilitar);
+    inputFecha.min = fechaDeshabilitar;
 }
