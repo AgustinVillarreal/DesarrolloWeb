@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Frase from "./components/Frase";
+import logo from './logo.svg';
 
 const Contenedor = styled.div`
   display: flex;
@@ -9,6 +10,10 @@ const Contenedor = styled.div`
   flex-direction: column;
 `;
 
+const Imagen = styled.img`
+  width: 95%;
+  max-width: 30rem;
+`;
 
 const Boton = styled.button`
   background: -webkit-linear-gradient(
@@ -20,7 +25,7 @@ const Boton = styled.button`
   background-size: 300px;
   font-family: Arial, Helvetica, sans-serif;
   color: #fff;
-  margin-top: 3rem;
+  margin: 3rem 0;
   padding: 1rem 3rem;
   font-size: 2rem;
   border: 2px solid black;
@@ -49,6 +54,7 @@ function App() {
 
   return (
       <Contenedor>
+        <Imagen src={logo} />
         <Frase frase={frase} />
         <Boton onClick={consultarAPI}>Obtener Frase</Boton>
       </Contenedor>

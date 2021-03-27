@@ -6,9 +6,10 @@ const ContenedorFrase = styled.div`
     padding: 3rem;
     border-radius: .5rem;
     max-width: 800px;
+    margin-top: 2rem;
 
-    @media (min-width: 992px){
-        margin-top: 10rem;
+    @media (min-width: 768px){
+        margin-top: 5rem;
     }
 
     h1 {
