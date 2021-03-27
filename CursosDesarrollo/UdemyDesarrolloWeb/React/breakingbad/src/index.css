@@ -15,7 +15,7 @@ body {
   background-size: 100%;
   min-height: 100%;
   background-repeat:no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; 
   margin: 0;  
 }
 
