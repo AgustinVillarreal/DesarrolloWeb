@@ -9,9 +9,14 @@ body {
 }
 ul {
   list-style: none;
-  padding: none;
-  margin: none;
+  padding: 0;
+  margin: 0;
 }
+li{
+  margin-bottom: .5rem;
+}
+
+
 span.resultado {
   position: relative;
   width: 100%;
