@@ -61,10 +61,10 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   font-size: 1.4rem;
 }
 .temperatura {
-  font-size: 4rem!important
+  font-size: 3rem!important
 }
 .temperatura span {
-  font-size: 2rem!important;
+  font-size: 1.5rem!important;
   vertical-align: super;
 }
 
@@ -76,4 +76,12 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label {
   padding: 1rem!important;
   text-align: center!important;
   color: #FFF!important;
+}
+
+.no-border{
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
