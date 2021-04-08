@@ -7,12 +7,12 @@ import {
   ELIMINAR_PROYECTO
 } from "../../types";
 
-export default (state, action) => {
+const proyectoReducer = (state, action) => {
   switch (action.type) {
     case AGREGAR_PROYECTO:
       return {
         ...state,
-        proyectos: [...state.proyectos, action.payload],
+        proyectos: [ action.payload, ...state.proyectos],
         formulario: false,
         errorformulario: false,
       };
@@ -46,3 +46,4 @@ export default (state, action) => {
       return state;
   }
 };
+export default proyectoReducer;
