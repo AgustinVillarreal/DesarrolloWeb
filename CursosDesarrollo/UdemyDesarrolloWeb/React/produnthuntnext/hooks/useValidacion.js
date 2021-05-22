@@ -14,7 +14,7 @@ const useValidacion = (stateInicial, validar, fnSubmit) => {
       }
       setSubmitForm(false)
     }
-  }, [])
+  }, [errores])
 
   // Funcion que se ejecuta conforme el usuario escribe algo
   const handleChange = (e) => {
@@ -31,13 +31,19 @@ const useValidacion = (stateInicial, validar, fnSubmit) => {
     setErrores(erroresValidacion);
     setSubmitForm(true)
   }
+
+  // cuando se realiza el evento de blur
+  const handleBlur = () => {
+    const erroresValidacion = validar(valores);
+    setErrores(erroresValidacion);
+  }
   
   return {
     valores,
     errores,
-    submitForm,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleBlur
   };
 }
  
